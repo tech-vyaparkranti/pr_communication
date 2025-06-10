@@ -53,7 +53,7 @@ a{color: #333;text-decoration: none !important;}
 .midd-content h3{
     text-transform: capitalize;
     font-size: 18px;
-} 
+}
 .img-fluid{width: 100%;}
 .footer-logo img {max-width: 118px;height: 100%;border-radius: 50%;margin-left:10px;}
 /* view more */
@@ -82,7 +82,7 @@ a{color: #333;text-decoration: none !important;}
 }
 
 /* Sticky bar  */
-.sticky-navigation {background-color: var(--brown-color);}
+.sticky-navigation {background-color: #58424d75;}
 .sticky-navigation .custom-container {display: flex;justify-content: space-between;align-items: center;height: 40px;}
 ul.sticky-content {list-style: none;display: block;}
 ul.sticky-content > li{display: inline-block;}
@@ -237,7 +237,7 @@ li.dropdown-list:hover:after{transform: rotate(-90deg);}
     ul.sublist ul.sublist{left: 0 !important;margin: 0 0 !important}
     .sublist li.dropdown-list:after{display: none;}
     ul.sublist.active {display: block;opacity: 1;visibility: visible;}
-   
+
 }
 @media (min-width: 768px){
     li.dropdown-list:hover > ul.sublist, li.dropdown-list:hover ul.sublist > ul.sublist , ul.sublist.active-list {visibility: visible;opacity: 1;}
@@ -420,7 +420,7 @@ section.chairperson {
     max-height: 250px;
 }
 .destinations-block {
-   
+
     margin: 10px;
     padding: 10px;
     border: 1px solid lightgray;
@@ -537,7 +537,7 @@ section.chairperson {
     background-color: #fff6f4;
 }
 .copyright-section {
-    background-color: var(--brown-color);
+    background-color: #58424d75;
     color: rgb(var(--black-color));
 }
 .footer-logo > p {
@@ -864,7 +864,7 @@ section.chairperson {
     width:1000px;
 }}
 @media (max-width: 767px){
-    
+
     .sticky-navigation .gtranslate_wrapper {
         position: fixed;
         bottom: 0;
@@ -874,7 +874,7 @@ section.chairperson {
         background-color: rgb(var(--black-color) / 75%);
         border-top-right-radius: 8px;
     }
-    
+
     .chairperson-content h3, .chairperson-content p {
         text-align: center;
     }
@@ -1103,7 +1103,7 @@ section.chairperson {
         opacity: 0;
         backdrop-filter: blur(10px);
     }
-   
+
     body.open-menu .header-contaner ul li:hover a,body.open-menu .header-contaner ul li:focus a {
         color: #fff;
     }
