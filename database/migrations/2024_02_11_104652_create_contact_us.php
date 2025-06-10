@@ -19,10 +19,9 @@ class CreateContactUs extends Migration
             $table->string('last_name',50)->nullable(false);
             $table->string('email',100)->nullable(false)->index("email_index");
             $table->string('phone_number',20)->nullable(false)->index("phone_number");
-            $table->string('company_name',255)->nullable(true)->index("company_name");
             $table->text('message')->nullable(false);
             $table->string('ip_address',50)->nullable(false)->index("ip_index");
-            $table->string('user_agent',255)->nullable(true);
+            $table->string('user_agent',255)->nullable(false);
             $table->tinyInteger('status')->default('1')->nullable(false);
             $table->timestamps();
         });

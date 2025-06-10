@@ -5,7 +5,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>@yield("dashboard_title")</title>
+    <title>@yield("title")</title>
 
     <meta name="description" content="" />
 
@@ -30,6 +30,8 @@
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="dashboard/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+    <link rel="stylesheet" href="{{ asset("dashboard/assets/css/select2.css")}}" />
 
     <!-- Page CSS -->
 

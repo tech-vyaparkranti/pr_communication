@@ -1,74 +1,34 @@
-<div class="main-wrapper">
-    <!-- header section -->
-    @php
-        $elements = \App\Models\WebSiteElements::where('status','1')->get();
-        $elementData = $elements->pluck('element_details', 'element')->toArray();
-        $brand = \App\Models\BrandPortfolio::where('status',1)->get();
-
-    @endphp
-    <header class="header-wrapper home">
-        <div class="header-container">
-            <div class="header-inner_wrapper">
-                <div class="header-left_navigation">
-                    <!-- brand logo -->
-                    <div class="brand_wrapper">
-                        <a href="{{ url('/') }}" aria-level="Main logo"><img src="{!! asset($elementData['logo'] ?? 'assets/img/logo.png') !!}" class="img-fluid" width="" height="" alt="SthirtaCorp"/></a>
-                    </div>
-                    <!-- brand logo -->
-                    <!-- header navigation -->
-                    <div class="header_navigation">
-                        <div class="header-inner_list">
-                            <ul class="nav-list">
-                                <li><a href="{{ url('/') }}">Home</a></li>
-                                <li><a href="{{ route('aboutUs') }}">About Us</a></li>
-                                <li><a href="{{ route('product') }}">Product & Solution</a>
-                                  <ul class="sublinks">
-                                    @foreach ($brand as $item)
-                                    <li><a href="{{ route('product-brand',[$item->slug]) }}">{{$item->title}}</a></li>
-                                    @endforeach
-                                    {{-- <li><a href="{{ route('tostem') }}">Tostem</a></li>
-                                    <li class="inner-sublinks"><a href="{{ route('greenlam') }}">Greenlam</a>
-                                        <ul class="sublinks">
-                                            <li><a href="{{ route('greenlam') }}/#mikasa-doors"> Mikasa Doors</a></li>
-                                            <li><a href="{{ route('greenlam') }}/#mikasa-floors"> Mikasa Floors</a></li>
-                                        </ul>
-                                    </li>
-                                   
-                                    <li><a href="{{ route('vox') }}">Vox</a></li>
-                                    <li><a href="{{ route('sloan') }}">Sloan</a></li> --}}
-                                  </ul>
-                                </li>
-                                <li><a href="{{ route('galleryPages') }}">Gallery</a></li>
-                                <li><a href="{{ route('contactUs') }}">Contact Us</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- header navigation -->
-                </div>
-                <!-- right navigation -->
-                <div class="header-right_navigation">
-                    <!-- navigation hamburgur -->
-                    <div class="hamburgur-file">
-                        <div class="menu-btn">
-                            <div class="menu-btn__burger"></div>
-                        </div>
-                    </div>
-                    <div class="right_navigation_container">
-                        <ul class="social-media">
-                            <li><a href="{!! strip_tags($elementData['facebook_link'] ?? 'https://www.facebook.com/Sthirtacorp/') !!}"
-                                target="_blank"
-                                aria-label="Read more about Sthirta Corp facebook">
-                               <i class="fa fa-facebook"></i>
-                             </a></li>
-                            <li><a href="{!! strip_tags($elementData['instagram_link'] ?? 'https://www.instagram.com/sthirtacorp/?hl=en') !!}" target="_blank" aria-label="Read more about Sthirta Corp Instagram"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="{!! strip_tags($elementData['linkedin_link'] ?? 'https://www.linkedin.com/in/sthirta-corp-a47591226') !!}" target="_blank" aria-label="Read more about Sthirta Corp Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="{!! strip_tags($elementData['youtube_link'] ?? 'https://www.youtube.com/@sthirtacorp') !!}" target="_blank" aria-label="Read more about Sthirta Corp Youtube"><i class="fa fa-youtube-play"></i></a></li>
-                            <li><a href="https://wa.me/{!! strip_tags($elementData['whatsapp_number'] ?? '+918826354100') !!}" target="_blank" aria-label="Read more about Sthirta Corp WhatsApp"><i class="fa fa-whatsapp"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- right navigation -->
-            </div>
+<div class="sticky-navigation">
+    <div class="custom-container">
+    <ul class="sticky-content p-0 m-0">
+            <li><a href="mailto:{{ $email_1??"info@adiyogiglobal.com" }}"><i class="fa fa-envelope"></i>&nbsp;<span>{{ $email_1??"info@adiyogiglobal.com" }}</span></a></li>
+            <li><a href="tel:+91{{ isset($contact_us_contact_number)?str_replace(" ","",$contact_us_contact_number):"+919266747031" }}"><i class="fa fa-phone"></i>&nbsp;<span>{{ $contact_us_contact_number??"+91 926 674 7031" }}</span></a></li>
+        </ul>
+        <div class="gtranslate_wrapper"></div>
+    </div>
+</div> 
+<!-- Header section Start -->
+<header class="main-header">
+    <div class="header-contaner">
+        <div class="logo-section">
+            <div class="mobile-bars" hidden></div>
+            <a href="{{ url('/') }}" aria-level="Main logo"><img src="{{ asset($Logo??"./assets/img/logo.png") }}" class="img-fluid" width="120" height="90" alt="Home Styler"></a>
         </div>
-    </header>
-    <!-- header section -->
+        <div class="slide-navigation">
+            <div class="navbar-wrapper">
+                <ul class="navbar-block">
+                    <li><a href="{{ url('/') }}">Home</a></li>
+                    <li><a href="{{ route('aboutUs') }}">About Us</a> </li>
+                    <li><a href="{{ route('productPage') }}">Products</a></li> 
+                    <li><a href="{{ route('contactUs') }}">Contact Us</a></li>
+                </ul>
+            </div>
+            <ul class="social-media">
+                <li><a href="{!! $facebook_link ?? 'https://www.facebook.com/adiyogiglobal' !!}" aria-label="Read more about Adiyogiglobal  facebook"><i class="fa-brands fa-facebook"></i></a></li>
+                <li><a href="{!! $linkedin_link ?? '/' !!}" aria-label="Read more about Adiyogiglobal  Linkedin"><i class="fab fa-linkedin"></i></a></li>
+                <li><a href="{!! $instagram_link ?? 'https://www.instagram.com/adiyogi_global/' !!}" aria-label="Read more about Adiyogiglobal  Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="{!! $youtube_link ?? 'https://www.youtube.com/@AdiyogiGlobal' !!}" aria-label="Read more about Adiyogiglobal  Youtube"><i class="fa-brands fa-youtube"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</header>

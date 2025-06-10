@@ -1,9 +1,10 @@
 @extends('layouts.dashboardLayout')
-@section('title', 'Contact Us')
+@section('title', 'Manage Contact Us')
 @section('content')
 
-    <x-content-div heading="Manage Contact Us Data">
-        <x-card-element header="Contact Us Data">
+    <x-content-div heading="Manage Contact Us">
+
+        <x-card-element header="Manage Contact Us Data">
             <x-data-table>
 
             </x-data-table>
@@ -12,13 +13,17 @@
 @endsection
 
 @section('script')
-<script type="text/javascript">
+@include('Dashboard.include.dataTablesScript')
+    <script type="text/javascript">
+        let site_url = '{{ url('/') }}';
+        let table = "";
         $(function() {
 
             table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
                 "scrollX": true,
+                scrollY: '400px',
                 ajax: {
                     url: "{{ route('ContactUsData') }}",
                     type: 'POST',
@@ -33,9 +38,15 @@
                         title: "Sr.No."
                     },
                     {
+                        data: 'id',
+                        name: 'id',
+                        title: 'Id',
+                        visible: false
+                    },
+                    {
                         data: 'first_name',
                         name: 'first_name',
-                        title: 'First Name',
+                        title: 'First Name'
                     },
                     {
                         data: 'last_name',
@@ -50,24 +61,30 @@
                     {
                         data: 'phone_number',
                         name: 'phone_number',
+                        render: function(data, type, row) {
+                            let number = '';
+                            if (data) {
+                                number = (row.country_code??"") + row.phone_number;
+                            }
+                            return number;
+                        },
                         title: 'Phone Number'
-                    },
-                    {
-                        data: 'company_name',
-                        name: 'company_name',
-                        title: 'Company Address'
                     },
                     {
                         data: 'message',
                         name: 'message',
+                        orderable: false,
+                        searchable: false,
                         title: 'Message'
                     },
                     {
-                        data: 'ip_address',
-                        name: 'ip_address',
-                        title: 'IP Address'
-                    },
-                    
+                        data: 'created_at_date',
+                        name: 'created_at_date',
+                        orderable: false,
+                        searchable: false,
+                        title: 'Created Date'
+                    }
+
                 ],
                 order: [
                     [1, "desc"]
@@ -76,5 +93,6 @@
 
         });
     </script>
-    @include('Dashboard.include.dataTablesScript')
+    
+    {{-- @include('Dashboard.include.summernoteScript') --}}
 @endsection

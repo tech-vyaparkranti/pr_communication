@@ -59,14 +59,14 @@
                 </span>
                 <span class="app-brand-text demo menu-text fw-bolder ms-2">Dashboard</span>
               </a>
-  
+
               <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
                 <i class="bx bx-chevron-left bx-sm align-middle"></i>
               </a>
             </div>
-  
+
             <div class="menu-inner-shadow"></div>
-  
+
             <ul class="menu-inner py-1">
               <!-- Dashboard -->
               <li class="menu-item"  >
@@ -75,12 +75,26 @@
                   <div data-i18n="Analytics">Dashboard</div>
                 </a>
               </li>
-              <li class="menu-item">
-                <a href="{{ route('webSiteElements') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-bulb"></i>
-                    <div data-i18n="Analytics">WebSite Elements</div>
+              <!-- Site Navigation -->
+              {{-- <li class="menu-item">
+                <a href="{{route("siteNav")}}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-menu"></i>
+                  <div data-i18n="Analytics">Naviagtion</div>
                 </a>
-            </li>
+              </li> --}}
+              <!-- Site Navigation -->
+              <li class="menu-item">
+                <a href="{{route("Slider")}}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-notepad"></i>
+                  <div data-i18n="Analytics">Control Slider</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="{{route("webSiteElements")}}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-bulb"></i>
+                  <div data-i18n="Analytics">WebSite Elements</div>
+                </a>
+              </li>
               <li class="menu-item">
                 <a href="{{route("manageGallery")}}" class="menu-link">
                   <i class="menu-icon tf-icons bx bx-images"></i>
@@ -88,51 +102,15 @@
                 </a>
               </li>
               <li class="menu-item">
-                <a href="{{route("viewBrand")}}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bx-link"></i>
-                  <div data-i18n="Analytics">Manage Brand Association</div>
+                <a href="{{route("servicesSlider")}}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-bulb"></i>
+                  <div data-i18n="Analytics">Manage Products</div>
                 </a>
               </li>
               <li class="menu-item">
-                <a href="{{route("viewBrandPortfolio")}}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bx-collection"></i>
-                  <div data-i18n="Analytics">Manage Brand Portfolio</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="{{route("viewClientTestimonial")}}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bx-message-rounded-dots"></i>
-                  <div data-i18n="Analytics">Manage Client Testimonial</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="{{route("viewBrandService")}}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bx-cube"></i>
-                  <div data-i18n="Analytics">Manage Brand Product & Service</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="{{route("getSubscribe")}}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bx-rss"></i>
-                  <div data-i18n="Analytics">Subscribers Data</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="{{route("manageContactUs")}}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bx-envelope"></i>
-                  <div data-i18n="Analytics">Contact Us Data</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="{{route("viewOverView")}}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bx-bar-chart-alt-2"></i>
-                  <div data-i18n="Analytics">Manage Over View</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="{{route("enquiryAdminPage")}}" class="menu-link">
-                  <i class="menu-icon tf-icons bx bx-bar-chart-alt-2"></i>
-                  <div data-i18n="Analytics">Enquiry Data</div>
+                <a href="{{route("homeDestinationsSlider")}}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-bulb"></i>
+                  <div data-i18n="Analytics">Manage Home Products</div>
                 </a>
               </li>
             </ul>

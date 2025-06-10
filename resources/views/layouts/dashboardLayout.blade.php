@@ -46,7 +46,7 @@
     </div>
     <!-- / Layout wrapper -->
 
-     
+
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
@@ -75,7 +75,7 @@
         $(".menu-link").each(function(){
           if($(this).prop("href")==currentLocation){
             $(this).parent().addClass("active");
-            
+
           }
         });
       });
@@ -103,7 +103,7 @@
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: error_message             
+            text: error_message
           });
       }
       function scrollToDiv(id){
@@ -111,17 +111,17 @@
           $("html, body").animate({ scrollTop: $("#elementID").offset().top }, "slow");
         }else{
           $("html, body").animate({ scrollTop: 0 }, "slow");
-        }        
+        }
       }
     </script>
   </body>
-  
-  
+
+
      <!-- include summernote css/js-->
      <script src="{{ asset('dashboard/summernote-0.8.18-dist/summernote-lite.min.js') }}"></script>
      <link href="{{ asset('dashboard/summernote-0.8.18-dist/summernote-lite.min.css') }}" rel="stylesheet">
-      
-         
+
+
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   @yield("script")
 </html>

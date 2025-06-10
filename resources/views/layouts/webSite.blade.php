@@ -5,7 +5,7 @@
     @include('include.head')
 </head>
 
-<body class="body_wrapper {{Request::is('/') ? 'common-home' : 'information-page' }}">
+<body class="{{Request::is('/') ? 'common-home' : 'information' }}">
     @include('include.navigation')
 
     <!-- end navigation -->

@@ -62,7 +62,6 @@ class GalleryItem extends Model
             }
             if($request->file(self::LOCAL_IMAGE)){
                 foreach($request->file(self::LOCAL_IMAGE) as $galleryItem){
-                    
                     $fileName = $galleryItem->getClientOriginalName();
                     $fileName = "Img_$maxId".preg_replace('/[^A-Za-z0-9.\-]/', '', $fileName);
                     $galleryItem->move(public_path().self::IMAGE_UPLOAD_PATH, $fileName);
@@ -119,10 +118,10 @@ class GalleryItem extends Model
                     $maxId++;
                 }
                 if($request->file(self::LOCAL_IMAGE)){
-                    
+
                     $i = 0 ;
                     foreach($request->file(self::LOCAL_IMAGE) as $galleryItem){
-                        
+
                         $fileName = $galleryItem->getClientOriginalName();
                         $fileName = "Img_$maxId".preg_replace('/[^A-Za-z0-9.\-]/', '', $fileName);
                         $galleryItem->move(public_path().self::IMAGE_UPLOAD_PATH, $fileName);
@@ -132,19 +131,19 @@ class GalleryItem extends Model
                             if($check->{self::LOCAL_IMAGE}){
                                 File::delete(app_path($check->{self::LOCAL_IMAGE}));
                             }
-                            
+
                         }else{
                             unset($update[self::UPDATED_BY]);
                             $update[self::CREATED_BY] = Auth::user()->id;
-                            
+
                             GalleryItem::insert($update);
                         }
-                        
+
                         $maxId++;
                         $i++;
                     }
                 }
-                
+
 
                 if($request->file(self::LOCAL_VIDEO)){
                     $insert[self::LOCAL_IMAGE] = null;
@@ -159,17 +158,17 @@ class GalleryItem extends Model
                     $update[self::UPDATED_BY] = Auth::user()->id;
                     GalleryItem::where(self::ID,$check->{self::ID})->update($update);
                 }
-                $return = ["status"=>true,"message"=>"Updated.","data"=>"null"];  
+                $return = ["status"=>true,"message"=>"Updated.","data"=>"null"];
             }else{
                 $return = ["status"=>false,"message"=>"Not found.","data"=>"null"];
-            }    
+            }
             return $return;
         }catch(Exception $exception){
             $this->reportException($exception);
             return ["status"=>false,"message"=>"Something went wrong.","data"=>"null"];
         }
     }
-    
+
     /**
      * getAllGalleryImages
      *
@@ -184,7 +183,7 @@ class GalleryItem extends Model
         ->whereNULL(self::VIDEO_LINK)
         ->whereNULL(self::LOCAL_VIDEO)->orderBy(self::POSITION,'asc')->get();
     }
-    
+
     /**
      * deleteGalleryItem
      *
@@ -192,7 +191,7 @@ class GalleryItem extends Model
      * @return void
      */
     public function deleteGalleryItem($requestData){
-        
+
         try {
             $check = self::where([
                 [self::ID, $requestData[self::ID]],
@@ -211,7 +210,7 @@ class GalleryItem extends Model
         }
         return $return;
     }
-    
+
     /**
      * getAllGalleryVideos
      *

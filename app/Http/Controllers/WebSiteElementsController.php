@@ -15,27 +15,28 @@ class WebSiteElementsController extends Controller
     
     use CommonFunctions;
     const ELEMENTS = [
-        "logo",
-        "address_office",
-        "address_showroom",
-        "mail",
-        "mobile",
-        "whatsapp_number",
-        "map_link",
+        "Logo",
+        "email_1",
+        "email_2",
+        "contact_us_contact_number",
         "facebook_link",
         "youtube_link",
-        "instagram_link",
-        "twitter_link",
         "linkedin_link",
-        "banner_title",
-        "banner_content",
-        "about_title",
-        "about_content",
-        "brand_content",
-        "overview_title",
-        "overview_content",
-        "client_testimonial_content",
-        // "mail_sales",
+        "instagram_link",
+        "home_about_content",
+        "home_about_image",
+        "footer_logo_name",
+        "address",
+        "whatsapp_footer_link",
+        "about_us_page_text",
+        "mision_image",
+        "mision_content",
+        "vision_image",
+        "vision_content",
+        "value_image",
+        "value_content",
+        "contact_us_image",
+        "contact_us_content",
     ];
     public function addWebSiteElements()
     {
@@ -53,7 +54,7 @@ class WebSiteElementsController extends Controller
                 $return = $this->updateWebSiteElement($requestData, $request);
             } else if ($request["action"] == "disable") {
                 $check = WebSiteElements::where(WebSiteElements::ID, $requestData[WebSiteElements::ID])->first();
-                $check->{WebSiteElements::UPDATED_BY} = Auth::user()->id;
+                $check->{WebSiteElements::UPDATED_BY} = Auth::user()->id; 
                 $check->{WebSiteElements::STATUS} = 0;
                 $check->save();
                 $this->forgetWebSiteElements();
@@ -84,7 +85,7 @@ class WebSiteElementsController extends Controller
                 $check->{WebSiteElements::ELEMENT} = $requestData[WebSiteElements::ELEMENT];
                 $check->{WebSiteElements::ELEMENT_TYPE} = $requestData[WebSiteElements::ELEMENT_TYPE];
                 if ($requestData[WebSiteElements::ELEMENT_TYPE] == "Image") {
-                    $fileUpload = $this->uploadLocalFile($request, "element_details_image", "/images/WesiteElements/");
+                    $fileUpload = $this->uploadLocalFile($request, "element_details_image", "/website/uploads/WesiteElements/");
                     if ($fileUpload["status"]) {
                         $check->{WebSiteElements::ELEMENT_DETAILS} = $fileUpload["data"];
                     } else {
@@ -124,7 +125,7 @@ class WebSiteElementsController extends Controller
             $check->{WebSiteElements::ELEMENT} = $requestData[WebSiteElements::ELEMENT];
             $check->{WebSiteElements::ELEMENT_TYPE} = $requestData[WebSiteElements::ELEMENT_TYPE];
             if ($requestData[WebSiteElements::ELEMENT_TYPE] == "Image") {
-                $fileUpload = $this->uploadLocalFile($request, "element_details_image", "/images/WesiteElements/");
+                $fileUpload = $this->uploadLocalFile($request, "element_details_image", "/website/uploads/WesiteElements/");
                 if ($fileUpload["status"]) {
                     $check->{WebSiteElements::ELEMENT_DETAILS} = $fileUpload["data"];
                 } else {
@@ -162,33 +163,7 @@ class WebSiteElementsController extends Controller
                 }
                 return $btn;
             })
-            ->rawColumns(['action',WebSiteElements::ELEMENT_DETAILS])
+            ->rawColumns(['action'])
             ->make(true);
-    }
-
-
-    public function homeElements()
-    {
-
-        $elements = WebSiteElements::where('status','1')->get();
-        $elementData = $elements->pluck('element_details', 'element')->toArray();
-        $data = [
-            'status' => true,
-            'success' => true,
-            'elements' => $elementData,
-        ];
-        return response()->json($data, 200);
-    }
-
-    public function socialMedia()
-    {
-        $elements = WebSiteElements::where('status','1')->whereIn('element',['facebook_link','youtube_link','instagram_link','twitter','linkedin','whatsapp_number'])->get();
-        $elementData = $elements->pluck('element_details', 'element')->toArray();
-        $data = [
-            'status' => true,
-            'success' => true,
-            'elements' => $elementData,
-        ];
-        return response()->json($data, 200);
     }
 }

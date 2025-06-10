@@ -1,5 +1,5 @@
 @extends('layouts.dashboardLayout')
-@section('title', 'Navigation')
+@section('title', 'WebSite Elements')
 @section('content')
 
 <x-content-div heading="WebSiteElements" >
@@ -19,10 +19,13 @@
                 <option value="Image">Image</option>
             </x-select-with-label>
             
-            <x-input-with-label-element id="element_type_file" label="Upload Element details" name="element_details_image" type="file" accept="image/*"></x-input-with-label-element>
-            <x-text-area-with-label div_class="col-md-12 col-sm-12 mb-3" id="element_type_text"
+            <x-input-with-label-element id="element_type_file" label="Upload Element details" name="element_details_image" type="file" accept="image/*" ></x-input-with-label-element>
+
+             <x-text-area-with-label div_class="col-md-12 col-sm-12 mb-3" id="element_type_text"
                     placeholder="Element details" label="Element details" name="element_details_text"></x-text-area-with-label>
             <x-form-buttons></x-form-buttons> 
+            
+             
         </x-form-element>
 
     </x-card-element>
@@ -84,7 +87,7 @@
                             let image = '';
                             if (row.element_type=="Image") {
 
-                                image += '<img alt="Image Link" src="'+ site_url + data + '" class="img-thumbnail">';
+                                image += '<img alt="Image Link" src="'+site_url + data + '" class="img-thumbnail">';
                             }else{
                                 console.log(data);
                                 image = row.element_details;
@@ -118,10 +121,7 @@
                     $("#element_type_text").val(row['element_details']);                
                 }
                 $("#action").val("update");
-                $('#element_type_text').summernote('destroy');
-            $('#element_type_text').summernote({
-                focus: true
-            });
+
                 scrollToDiv();
             } else {
                 errorMessage("Something went wrong. Code 101");
@@ -200,6 +200,5 @@
          
 </script>
     @include('Dashboard.include.dataTablesScript')
-    
     {{-- @include('Dashboard.include.summernoteScript') --}}
 @endsection

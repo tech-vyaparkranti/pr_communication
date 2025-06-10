@@ -17,7 +17,6 @@ class ContactUsModel extends Model
     const EMAIL = "email";
     const COUNTRY_CODE = "country_code";
     const PHONE_NUMBER = "phone_number";
-    const COMPANY_NAME = "company_name";
     const MESSAGE = "message";
     const IP_ADDRESS = "ip_address";
     const USER_AGENT = "user_agent";

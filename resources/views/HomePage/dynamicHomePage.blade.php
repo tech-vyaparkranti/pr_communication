@@ -1,819 +1,468 @@
 @extends('layouts.webSite')
-@section('title', 'Sthirta Corp')
+@section('title', 'Adiyogi Global ')
 @section('content')
     {{-- @include('include.navigation') --}}
     @include('include.slider')
-    <!-- home about section -->
-    <section class="about-section">
-        <div class="about-container">
-            <div class="about-container_wrapper">
-                <!-- about section top title -->
-                <div class="about-section_toptitle">
-                    <h3 class="webfixf">About Us</h3>
+
+    <!-- aboutus Section -->
+    <div class="destinations pt-5 pb-2">
+        <div class="custom-container">
+            <!-- <div class="site-title">
+                <h2 class="text-center">About Us</h2>
+            </div>
+            <div class="about-image">
+                <img src="./assets/img/chilli.jpg" alt="" style="object-fit: cover;
+                
+    height: 300px;
+    width: 400px;">
+                <div class="about-text">
+            <p >{!! isset($aboutText['0']->sort_about_us) ? $aboutText['0']->sort_about_us : 'Please fill about data from admin panel.'  !!}</p>
+</div>
+</div> -->
+<div class="col-md-12 mb-4 offerings-container">
+<div class="site-title">
+                <h2  class="text-center">About Us</h2>
+            </div>
+                    <div class="offerings-block">
+                        <div class="offerings-content" >
+                       <p class="text-justify">{!! $home_about_content ?? 'Adiyogi Global is dedicated to providing healthy, high-quality products to customers worldwide. With
+                        over 12 years of experience, we source the finest goods directly from top farmers and manufacturers
+                        across India. Our commitment to quality and transparency ensures that every product meets the highest
+                        standards of purity and freshness. We take pride in earning the trust of our customers through
+                        exceptional service and a deep dedication to their well-being. At Adiyogi Global, we bring the best of
+                        India to the world, always prioritizing quality and care.Customer trust is the foundation of Adiyogi Global. We are committed to earning and maintaining this
+                        trust through transparency, integrity, and exceptional service. From your first interaction with us, we
+                        aim to provide a seamless and satisfying experience.' !!}</p>
+                      
+                        </div>
+                        <div class="offerings-figure"data-aos="fade-right">
+                            <img src="{{ asset($home_about_image ?? './assets/img/Random Pics.jpeg') }}" class="img-fluid rounded" width="" height="" alt="Bikaner">
+                        </div>
+                    </div>
                 </div>
-                <!-- about section title -->
-                <div class="about-section_title">
-                    <h2 class="webfixf-in">{!! $elementData['about_title'] ?? 'Elevating structures, enriching lives' !!}</h2>
-                    <p class="webfixf">{!! $elementData['about_content'] ??
-                        'With <b>14+ years</b> of experience in the <b>Building Material Industry</b> behind us. We set out to bring the best of premium craftmanship to our clients. It is the amalgamation of this experience and understanding that resulted in the birth of <b>Sthirta Corp.</b> The one stop for premium building material solutions. Our alliance with each brand we represent is borne out of our understanding and longstanding experience.</p>' !!}
+            
+        </div>
+    </div>
+    <!-- About Section End
+    <section class="chairperson">
+        <div class="custom-container">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <div class="chairperson-figure pb-5">
+                        <?php if(!empty($getChairManData['0']->image)) { ?>
+                        <img src="<?php echo url($getChairManData['0']->image)?>" width="" height="" class="img-fluid" alt="Chairperson's" />
+                        <?php } else{ ?>
+                            <img src="assets/img/Mukesh-Kumar-Pandey-ji.png" width="" height="" class="img-fluid" alt="Chairperson's" />
+                            <?php } ?>
+                    </div>
                 </div>
-                <!-- about section content -->
-                <div class="about-section_content">
-                    <div class="about-section_content_wrapper">
-                        <!-- Swiper -->
-                        <div class="swiper-containers  swiper-container">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="about-section_slide_wrapper">
-                                        <img src="assets/img/3-png.png" />
-                                        <div class="about-section_slide_content">
-                                            <h2 class="webfixf">Accurate & Reliable</h2>
-                                            <p class="webfixf">At <b>Sthirta Corp</b>, we pride ourselves on our unwavering
-                                                commitment to accuracy and reliability. With every delivery, we guarantee
-                                                precise measurements, consistent quality, empowering you to build with
-                                                confidence and peace of mind.</p>
-                                        </div>
-                                    </div>
+                <div class="col-md-8">
+            <?php if(!empty($getChairManData['0']->message)) { ?>
+                <div class="chairperson-content">
+                    <h3>Message from Chairperson’s Desk</h3>
+                    <p><b>Welcome!</b><br>
+                       {!! $getChairManData['0']->message  !!}</b><br><span>(<?php echo $getChairManData['0']->name?>)</span></p>getChairManData
+                </div>
+                <?php } else { ?>
+                    <div class="chairperson-content">
+                        <h3>Message from Chairperson’s Desk</h3>
+                        <p><b>Welcome!</b><br>
+                            I am immensely proud of the journey KRISHIDHA FPO has undertaken. We started with a vision to empower our fellow farmers and transform their livelihoods. Today, seeing hundreds of families thriving under our umbrella fills me with immense satisfaction. Our commitment is unwavering. We will continue to work relentlessly to provide our farmers with the resources, knowledge, and support they need to achieve agricultural success. Join us on this journey of growth and prosperity!<br><b>Warm regards,</b><br><span>(Mr. Mukesh Kumar Pandey)</span></p>getChairManData
+                    </div>
+                 <?php }?>
+
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Destinations Section -->
+    <div class="destinations pt-5 pb-4" data-aos="fade-up">
+        <div class="custom-container">
+            <div class="site-title pb-4">
+                <h2 class="text-center">Our Products</h2>
+            </div>
+            <div class="swiper we-offer">
+                <div class="swiper-wrapper">
+                    @foreach ($home_products as $item )
+                    <div class="swiper-slide">
+                        <div class="destinations-block">
+                            <div class="destinations-figure">
+                                <img src="{{ asset($item->image) }}" class="img-fluid" width="" height="" alt="Destinations">
+                            </div>
+                            <span class="destinations-title mh-auto text-center">{{$item->heading_top}}</span>
+                        </div>
+            </div>
+                    @endforeach
+                <div class="swiper-slide">
+                            <div class="destinations-block">
+                                <div class="destinations-figure">
+                                    <img src="./assets/img/Basmati rice.jpeg" class="img-fluid" width="" height="" alt="Destinations">
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="about-section_slide_wrapper">
-                                        <img src="assets/img/1-png.png" />
-                                        <div class="about-section_slide_content">
-                                            <h2 class="webfixf">Innovative Approach</h2>
-                                            <p class="webfixf">Innovation is our cornerstone. From cutting-edge materials to
-                                                advanced delivery solutions, we're constantly pushing boundaries to bring
-                                                you the latest in construction technology.</p>
-                                        </div>
-                                    </div>
+                                <span class="destinations-title mh-auto text-center">Basmati Rice</span>
+                            </div>
+                </div>
+                
+                <div class="swiper-slide">
+                            <div class="destinations-block">
+                                <div class="destinations-figure">
+                                    <img src="./assets/img/Ground Spice.jpg" class="img-fluid" width="" height="" alt="Destinations">
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="about-section_slide_wrapper">
-                                        <img src="assets/img/2-png.png" alt="img" />
-                                        <div class="about-section_slide_content">
-                                            <h2 class="webfixf">Globally Accepted Designs</h2>
-                                            <p class="webfixf">Embrace global standards with our creative solutions. Our
-                                                curated selection of Products blends international trends with local needs,
-                                                ensuring your projects stand out while meeting worldwide standards for
-                                                quality and creativity.</p>
-                                        </div>
+                                <span class="destinations-title mh-auto text-center">Ground Spices</span>
+                            </div>
+                </div>
+                <div class="swiper-slide">
+                            <div class="destinations-block">
+                                <div class="destinations-figure">
+                                    <img src="./assets/img/Fruit & Vegitables 2.jpg" class="img-fluid" width="" height="" alt="Destinations">
+                                </div>
+                                <span class="destinations-title mh-auto text-center">Fresh Fruits & Vegetables</span>
+                            </div>
+                </div>
+                <div class="swiper-slide">
+                            <div class="destinations-block">
+                                <div class="destinations-figure">
+                                    <img src="./assets/img/Non Basmati Rice 2.jpg" class="img-fluid" width="" height="" alt="Destinations">
+                                </div>
+                                <span class="destinations-title mh-auto text-center">Non Basmati Rice</span>
+                            </div>
+                </div>
+                <div class="swiper-slide">
+                            <div class="destinations-block">
+                                <div class="destinations-figure">
+                                    <img src="./assets/img/fresh-fruits-berries-.jpg" class="img-fluid" width="" height="" alt="Destinations">
+                                </div>
+                                <span class="destinations-title mh-auto text-center">Fresh Fruits</span>
+                            </div>
+                </div>
+            </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="view-button text-center pt-4">
+                <a href="{{ route('productPage') }}">Know more</a>
+            </div>
+        </div>
+    </div>
+    <!-- Destinations Section End -->
+
+     <!-- Destinations Section -->
+     <!-- <div class="destinations pt-5 pb-2">
+        <div class="custom-container">
+            <div class="site-title pb-0">
+                <h2 class="text-center">Glimpse of Product</h2>
+                <div class="destinations-block">
+                                <div class="destinations-figure">
+                                    <img src="./assets/img/chilli.jpg" class="img-fluid" width="" height="" alt="Destinations">
+                                </div>
+                                <span class="destinations-title mh-auto text-center">Chilli</span>
+                            </div>
+                {{-- <p class="text-center">Embark on unforgettable journeys to exotic destinations with our expertly crafted travel experiences.</p> --}}
+            </div>
+            <div class="swiper glimpse">
+                <div class="swiper-wrapper">
+                    @if (!empty($getAllProduts))
+                        @foreach ($getAllProduts as $product)
+                            <div class="swiper-slide mb-4">
+                                <div class="destinations-block">
+                                    <div style="width: auto;height: 150px; overflow: hidden;">
+                                        <img src="{{ url($product->p_img) }}" class="img-fluid"
+                                        alt="{!! $product->p_name !!}" style="width: 100%;height: 100%; object-fit: cover;">
                                     </div>
+                                    <span class="destinations-title mh-auto text-center">{!! $product->p_name !!}</span>
                                 </div>
                             </div>
-                            <!-- Add Pagination -->
-                            <div class="swiper-pagination custom_pagination"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- home about section -->
-    <!-- home proparty profile section -->
-    <section class="pro-profile">
-        <div class="pro-profile_container">
-            <div class="pro-profile_wrapper">
-                <!-- pro-profile section title -->
-                <div class="about-section_title pro-profile_title">
-                    <h2 class="webfixf-in">Brand Association</h2>
-                    <p class="webfixf">{!! $elementData['brand_content'] ??
-                        "We're here to ensure your building projects thrive. Your project success is our priority. Reach out to our dedicated customer support team for personalized assistance with all your needs.</p>" !!}
-                </div>
-                <!-- slide proparty wrapper -->
-                <div class="pro-profile_slide_wrapper">
-                    <div class="pro-profile_slide-container swiper-container">
-                        <div class="swiper-wrapper">
-                            @if ($brandAssociation)
-                                @php
-                                    $images = json_decode($brandAssociation->image);
-                                @endphp
-                                @foreach ($images as $brand)
-                                    <div class="swiper-slide">
-                                        <div class="pro-profile_slide_box">
-                                            <div class="pro-profile_slide_inner_box">
-                                                <div class="pro-profile_slide_left_box">
-                                                    <div class="pro-profile_slide_img">
-                                                        <img src="{{ asset($brand) }}" alt="img"
-                                                            style="height: 400px;width:550px" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            @else
-                                <div class="swiper-slide">
-                                    <div class="pro-profile_slide_box">
-                                        <div class="pro-profile_slide_inner_box">
-                                            <div class="pro-profile_slide_left_box">
-                                                <div class="pro-profile_slide_img">
-                                                    <img src="assets/img/greenlam/pexels-photo-6801926.jpg"
-                                                        alt="img" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="pro-profile_slide_box">
-                                        <div class="pro-profile_slide_inner_box">
-                                            <div class="pro-profile_slide_left_box">
-                                                <div class="pro-profile_slide_img">
-                                                    <img src="assets/img/greenlam/ours-contents.jpg" alt="img" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="pro-profile_slide_box">
-                                        <div class="pro-profile_slide_inner_box">
-                                            <div class="pro-profile_slide_left_box">
-                                                <div class="pro-profile_slide_img">
-                                                    <img src="assets/img/tostem/tostem-banner.jpg" alt="img" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="pro-profile_slide_box">
-                                        <div class="pro-profile_slide_inner_box">
-                                            <div class="pro-profile_slide_left_box">
-                                                <div class="pro-profile_slide_img">
-                                                    <img src="assets/img/vox/home-2.jpg" alt="img" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="pro-profile_slide_box">
-                                        <div class="pro-profile_slide_inner_box">
-                                            <div class="pro-profile_slide_left_box">
-                                                <div class="pro-profile_slide_img">
-                                                    <img src="assets/img/sloan/sloan.jpg" alt="img" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif
-
-                        </div>
-                        <!-- Add Arrows -->
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- home proparty profile section -->
-    <!-- Sthirta Corpsection -->
-    <section class="geox-section">
-        <div class="geox-section_container">
-            <div class="geox-section_wrapper">
-                <!-- about section top title -->
-                <div class="about-section_toptitle geox-section_toptitle">
-                    <h3 class="webfixf">Brand portfolio</h3>
-                </div>
-                <!-- Sthirta Corpsection title -->
-                <div class="about-section_title geox-section_title">
-                    <h2 class="webfixf-in">High Quality Products & Solutions</h2>
-                    <p class="webfixf">Uncompromising quality, built into every product, every time.</p>
-                </div>
-                <div class="geox-section_content">
-                    <div class="geox-section_content_wrapper">
-                        @if ($brandPortfolio->isNotEmpty())
-                            @foreach ($brandPortfolio as $brand)
-                                <div class="geox-section_box">
-                                    <a href="{{ route('product-brand', [$brand->slug]) }}"
-                                        class="d-block geox-section_Inner_box">
-                                        <img src="{{ asset($brand->icon) }}" alt="Website" />
-                                        <div class="geox-section_content_box">
-                                            <h3 class="webfixf">{{ $brand->title }}</h3>
-                                        </div>
-                                    </a>
-                                </div>
-                            @endforeach
+                        @endforeach
                         @else
-                            <div class="geox-section_box">
-                                <a href="{{ route('product-brand', ['slug']) }}" class="d-block geox-section_Inner_box">
-                                    <img src="assets/img/tostem-new.png" alt="Website" />
-                                    <div class="geox-section_content_box">
-                                        <h3 class="webfixf">Tostem</h3>
-                                    </div>
-                                </a>
+                        <div class="swiper-slide mb-4">
+                            <div class="destinations-block">
+                                <div class="destinations-figure">
+                                    <img src="./assets/img/chilli.jpg" class="img-fluid" width="" height="" alt="Destinations">
+                                </div>
+                                <span class="destinations-title mh-auto text-center">Chilli</span>
                             </div>
-                            <div class="geox-section_box">
-                                <a href="{{ route('greenlam') }}" class="d-block geox-section_Inner_box">
-                                    <img src="assets/img/greenlam_laminates-new.png" alt="Website" />
-                                    <div class="geox-section_content_box">
-                                        <h3 class="webfixf">Greenlam – Mikasa</h3>
-                                    </div>
-                                </a>
+                        </div>
+                        <div class="swiper-slide mb-4">
+                            <div class="destinations-block">
+                                <div class="destinations-figure">
+                                    <img src="assets/img/Wheat.jpg" class="img-fluid" width="" height="" alt="Destinations">
+                                </div>
+                                <span class="destinations-title mh-auto text-center">Wheat</span>
                             </div>
-                            {{-- <div class="geox-section_box">
-                        <a href="{{ route('sloan') }}" class="d-block geox-section_Inner_box">
-                            <img src="assets/img/sloan-new.png" alt="Website" />
-                            <div class="geox-section_content_box">
-                                <h3 class="webfixf">Sloan</h3>
+                        </div>
+                        <div class="swiper-slide mb-4">
+                            <div class="destinations-block">
+                                <div class="destinations-figure">
+                                    <img src="assets/img/tomato.jpg" class="img-fluid" width="" height="" alt="Destinations">
+                                </div>
+                                <span class="destinations-title mh-auto text-center">Tomato</span>
                             </div>
-                        </a>
-                    </div> --}}
-                            <div class="geox-section_box">
-                                <a href="{{ route('vox') }}" class="d-block geox-section_Inner_box">
-                                    <img src="assets/img/vox-new.png" alt="Website" />
-                                    <div class="geox-section_content_box">
-                                        <h3 class="webfixf">Vox</h3>
-                                    </div>
-                                </a>
+                        </div>
+                        <div class="swiper-slide mb-4">
+                            <div class="destinations-block">
+                                <div class="destinations-figure">
+                                    <img src="assets/img/main-peas.jpg" class="img-fluid" width="" height="" alt="Destinations">
+                                </div>
+                                <span class="destinations-title mh-auto text-center">Peas</span>
                             </div>
-                            <div class="geox-section_box">
-                                <a href="{{ route('sloan') }}" class="d-block geox-section_Inner_box">
-                                    <img src="assets/img/sloan-new.png" alt="Website" />
-                                    <div class="geox-section_content_box">
-                                        <h3 class="webfixf">Sloan</h3>
-                                    </div>
-                                </a>
+                        </div>
+                        <div class="swiper-slide mb-4">
+                            <div class="destinations-block">
+                                <div class="destinations-figure">
+                                    <img src="assets/img/Paddy.jpg" class="img-fluid" width="" height="" alt="Destinations">
+                                </div>
+                                <span class="destinations-title mh-auto text-center">Paddy</span>
                             </div>
-                        @endif
-                    </div>
-                    <div class="geox-section_content_action">
-                        <a href="{{ route('product') }}">Know more <span><i
-                                    class="lni lni-arrow-top-right"></i></span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Sthirta Corpsection -->
-    <!-- our solution section -->
-    <section class="our-section">
-        <div class="our-section_container">
-            <div class="our-section_wrapper">
-                <!-- about section top title -->
-                <div class="about-section_toptitle geox-section_toptitle our-section_toptitle">
-                    <h3 class="webfixf">Overview</h3>
-                </div>
-                <!-- Sthirta Corpsection title -->
-                <div class="about-section_title geox-section_title our-section_title">
-                    <h2 class="webfixf-in">Elevating <br>Construction with Quality Materials</h2>
-                    <p class="webfixf">Providing top-quality materials for every project, we're your trusted partner in
-                        construction excellence</p>
-                </div>
-            </div>
-        </div>
-        <div class="our-section_image">
-            <div class="our-section_image_container">
-                <div class="our-section_image_box our-section_image_box_frist">
-
-                    @php
-                        $videoLink = $overView_Video->video_link ?? '';
-                        $videoId = '';
-
-                        if (
-                            preg_match(
-                                '/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([^\s&?\/]+)/',
-                                $videoLink,
-                                $matches,
-                            )
-                        ) {
-                            $videoId = $matches[1];
-                        }
-                    @endphp
-
-                    @if ($videoId)
-                        <iframe width="100%" height=""
-                            src="https://www.youtube.com/embed/{{ $videoId }}?color=white&showinfo=0&controls=0"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                        </iframe>
-                    @else
-                        <iframe width="100%" height=""
-                            src="https://www.youtube.com/embed/sxUEBoO4uac?color=white&showinfo=0&controls=0"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowfullscreen>
-                        </iframe>
+                        </div>
+                        <div class="swiper-slide mb-4">
+                            <div class="destinations-block">
+                                <div class="destinations-figure">
+                                    <img src="assets/img/Vermicompost.jpg" class="img-fluid" width="" height="" alt="Destinations">
+                                </div>
+                                <span class="destinations-title mh-auto text-center">Vermicompost</span>
+                            </div>
+                        </div>
                     @endif
-
                 </div>
-                <div class="our-section_image_box our-section_image_box_2nd">
-                    <div class="service-card swiper">
-                        <div class="swiper-wrapper">
-                            @if ($overView->isNotEmpty())
-                                @foreach ($overView as $item)
-                                    <div class="swiper-slide">
-                                        <div class="service-card-item">
-                                            <img src="{{ asset($item->image) }}" alt="img" class="img-fluid w-100"
-                                                style="min-height: 350px; max-height:350px" />
-                                            <p class="service-shor-detail">{{ $item->title }}</p>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            @else
-                                <div class="swiper-slide">
-                                    <div class="service-card-item">
-                                        <img src="assets/img/fea-img-416x647.jpg" alt="img"
-                                            class="img-fluid w-100" />
-                                        <p class="service-shor-detail">Providing top-quality materials for every project
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="service-card-item">
-                                        <img src="assets/img/fea-img-416x647.jpg" alt="img"
-                                            class="img-fluid w-100" />
-                                        <p class="service-shor-detail">Providing top-quality materials for every project
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="service-card-item">
-                                        <img src="assets/img/fea-img-416x647.jpg" alt="img"
-                                            class="img-fluid w-100" />
-                                        <p class="service-shor-detail">Providing top-quality materials for every project
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="service-card-item">
-                                        <img src="assets/img/fea-img-416x647.jpg" alt="img"
-                                            class="img-fluid w-100" />
-                                        <p class="service-shor-detail">Providing top-quality materials for every project
-                                        </p>
-                                    </div>
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-                    {{-- <img src="assets/img/fea-img-416x647.jpg" alt="img" /> --}}
-                </div>
+                <div class="swiper-pagination"></div>
             </div>
         </div>
-        <div class="our-section_container">
-            <div class="our-section_wrapper">
-                <!-- about section top title -->
-                <div class="about-section_toptitle geox-section_toptitle our-section_toptitle">
-                    <h3 class="webfixf">Client Testimonials</h3>
-                </div>
-                <!-- Sthirta Corpsection title -->
-                <div class="about-section_title geox-section_title our-section_title">
-                    <p class="webfixf"> {!! $elementData['client_testimonial_content'] ??
-                        'Their exceptional range of building materials exceeded my expectations, making my project a seamless success' !!}</p>
-                </div>
-                <div class="swiper-container mt-5" id="testimonials">
+    </div> -->
+    <!-- Destinations Section End -->
 
-                    <div class="swiper-wrapper">
-                        @if ($clientTestimonial->isNotempty())
-                            @foreach ($clientTestimonial as $testimonial)
-                                <div class="swiper-slide geox-section_box our-section_box ">
-                                    <div class="geox-section_Inner_box">
-                                        @php
-                                            $youtubeId = null;
-                                            if ($testimonial->video_link) {
-                                                preg_match(
-                                                    '/(?:v=|\/embed\/|\.be\/)([a-zA-Z0-9_-]+)/',
-                                                    $testimonial->video_link,
-                                                    $matches,
-                                                );
-                                                $youtubeId = $matches[1] ?? null;
-                                            }
-                                        @endphp
-                                        @if ($youtubeId)
-                                            <div class="our-section_Inner_box">
-                                                <iframe width="100%" height=""
-                                                    src="https://www.youtube.com/embed/{{ $youtubeId }}"
-                                                    title="YouTube video player" frameborder="0"
-                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                    allowfullscreen></iframe>
-                                            </div>
-                                        @else
-                                            <div class="our-section_Inner_box">
-                                                <iframe width="100%" height=""
-                                                    src="{{ $testimonial->video_link }}" title="YouTube video player"
-                                                    frameborder="0"
-                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                    allowfullscreen></iframe>
-                                            </div>
-                                        @endif
-
-                                        <div class="geox-section_content_box">
-                                            <h3 class="webfixf">Testimonial - {{ $testimonial->client_name }}</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        @else
-                            <div class="swiper-slide geox-section_box our-section_box ">
-                                <div class="geox-section_Inner_box">
-                                    <div class="our-section_Inner_box">
-                                        <iframe width="100%" height=""
-                                            src="https://www.youtube.com/embed/5cJIi-MJRS4?si=e_hogG7SBoA6Doox?color=white&showinfo=0&controls=0"
-                                            title="YouTube video player" frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                            allowfullscreen></iframe>
-                                    </div>
-                                    <div class="geox-section_content_box">
-                                        <h3 class="webfixf">Testimonial - Praful Jain</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide geox-section_box our-section_box ">
-                                <div class="geox-section_Inner_box">
-                                    <div class="our-section_Inner_box">
-                                        <iframe width="100%" height=""
-                                            src="https://www.youtube.com/embed/LwRGHC90VYA?si=vepMDeIact3Eqgjt?color=white&showinfo=0&controls=0"
-                                            title="YouTube video player" frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                            allowfullscreen></iframe>
-                                    </div>
-                                    <div class="geox-section_content_box">
-                                        <h3 class="webfixf">Testimonial - Ritu Jain</h3>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide geox-section_box our-section_box ">
-                                <div class="geox-section_Inner_box">
-                                    <div class="our-section_Inner_box">
-                                        <iframe width="100%" height=""
-                                            src="https://www.youtube.com/embed/vldeg4yFEHc?si=dGRoHmo8-BciJQrk?color=white&showinfo=0&controls=0"
-                                            title="YouTube video player" frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                            allowfullscreen></iframe>
-                                    </div>
-                                    <div class="geox-section_content_box">
-                                        <h3 class="webfixf">Testimonial - Saksham Jain</h3>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                    </div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
+    <!-- {{-- Testimonial Section  --}}
+    <section class="testimonial pt-5 pb-4">
+        <div class="custom-container">
+            <div class="site-title pb-3">
+                <h2 class="text-center">Testimonial</h2>
+                <p class="text-center text-white">Include quotes or stories from farmers who have benefited from <b>KRISHIDHA FPO's</b> services.</p>
             </div>
+            <div class="swiper testimonials mb-5">
+                <div class="swiper-wrapper" id="testimonialsData">
+
+   @if(isset($testimonial))
+   @foreach ($testimonial as $testimonialValue)
+
+   <div class="swiper-slide">
+    <div class="testimonials-block text-center">
+        <div class="testimonials-title"><?=$testimonialValue->client_name?><span> </span></div>
+        <p class="text-justify"><?=$testimonialValue->review_text?></p>
+    </div>
+</div>
+@endforeach
+@endif
+</div>
+</div>
+ Why Choose Us Section Starts -->
+<section class="our-service pt-5 pb-5">
+    <div class="custom-container">
+        <div class="section-heading mb-4">
+            <h2 class="text-center">Why chose us</h2>
         </div>
-    </section>
-    <!-- our solution section -->
-    <!-- home contact box section -->
-    {{-- <section class="contact-box">
-    <div class="contact-box_container">
-        <div class="contact-box_wrapper">
-            <div class="contact-box_left_box">
-                <div class="contact-box_box">
-                    <!-- about section top title -->
-                    <div class="about-section_toptitle geox-section_toptitle">
-                        <h3 class="webfixf">Section</h3>
-                    </div>
-                    <!-- Sthirta Corpsection title -->
-                    <div class="about-section_title geox-section_title">
-                        <h2 class="webfixf-in">Company customer types belief, Lorem Ipsum is not simply random text.</h2>
-                        <p class="webfixf">Ecopia leverages artificial intelligence (“AI”) to mine geospatial big data, rapidly generating HD Vector Maps at-scale, all with the accuracy of a trained GIS professional. Our HD Vector Maps are trusted foundational layers embedded into critical applications around the world.</p>
+        <div class="row" id="ourServices">
+            <div class="col-md-4 mb-4">
+                <div class="our-block">
+                    <div class="our-block-figure"><i class="fa-solid fa-sliders"></i></div>
+                    <div class="our-content">
+                        <p class="mb-0 text-center">Premium Quality Products</p>
                     </div>
                 </div>
             </div>
-            <div class="contact-box_right_box">
-                <div class="contact-box_form_box">
-                    <form method="POST" action="">
-                        <!-- about section top title -->
-                        <div class="about-section_toptitle geox-section_toptitle our-section_toptitle contact-section_toptitle">
-                            <h3 class="webfixf">Take the next step</h3>
-                        </div>
-                        <!-- Sthirta Corpsection title -->
-                        <div class="about-section_title geox-section_title our-section_title contact-section_title">
-                            <h2 class="webfixf-in">Contact Us</h2>
-                        </div>
-                        <div class="contact-box_contant">
-                            <div class="contact-box_contant_g">
-                                <div class="contact-box_group">
-                                    <input type="text" name="fname" placeholder="Frist Name" />
-                                </div>
-                                <div class="contact-box_group">
-                                    <input type="text" name="lname" placeholder="Last Name" />
-                                </div>
-                            </div>
-                            <div class="contact-box_group">
-                                <input type="email" name="email" placeholder="Email Address" />
-                            </div>
-                            <div class="contact-box_group">
-                                <input type="text" name="cname" placeholder="Company Name" />
-                            </div>
-
-                            <div class="contact-box_group">
-                                <input type="tel" name="tel" placeholder="Phone Number" />
-                            </div>
-                            <div class="contact-box_group">
-                                <textarea type="text" name="textarea" placeholder="Tell us more about your project, needs, and timelines" rows="5" ></textarea>
-                            </div>
-                            <div class="contact-box_group">
-                                <input type="submit" name="submit" value="submit" />
-                            </div>
-                        </div>
-                    </form>
+            <div class="col-md-4 mb-4">
+                <div class="our-block">
+                    <div class="our-block-figure"><i class="fa-solid fa-award"></i></div>
+                    <div class="our-content">
+                        
+                        <p class="mb-0 text-center">Extensive Range</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="our-block">
+                    <div class="our-block-figure"><i class="fa-regular fa-star"></i></div>
+                    <div class="our-content">
+                        
+                        <p class="mb-0 text-center">Trusted Sourcing</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="our-block">
+                    <div class="our-block-figure"><i class="fa-solid fa-headphones"></i></div>
+                    <div class="our-content">
+                       
+                        <p class="mb-0 text-center">Global Standards</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="our-block">
+                    <div class="our-block-figure"><i class="fa-solid fa-fire"></i></div>
+                    <div class="our-content">
+                        
+                        <p class="mb-0 text-center">Sustainable Practices</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="our-block">
+                    <div class="our-block-figure"><i class="fa-solid fa-wallet"></i></div>
+                    <div class="our-content">
+                       
+                        <p class="mb-0 text-center">Customer-Centric Approach</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section> --}}
-    <!-- home contact box section -->
+</section>
+<!-- Why Choose Us Section Ends -->
 
-    <!-- Modal Structure -->
-    <div id="contactModal" class="modal-overlay">
-        <div class="modal-container">
-            <!-- Image Section -->
-            <div class="modal-image-section">
-                <div
-                    style="width: 100%; max-width: 400px; aspect-ratio: 1/1; background-color: #BFDBFE; border-radius: 0.5rem; overflow: hidden;height:400px">
-                    <img src="{{ asset('./assets/img/Untitled design (5).jpg') }}" alt="Contact us"
-                        style="width: 100%; height: 100%; object-fit: cover;">
-                </div>
+        <!-- </div>
+    </section> --> 
+    <!-- <section class="our_partner pt-5 pb-2">
+        <div class="custom-container">
+            <div class="site-title pb-3">
+                <h2 class="text-center">Our Partner</h2>
             </div>
-
-            <!-- Form Section -->
-            <div class="modal-form-section">
-                <button class="close-btn" onclick="closeModal()">×</button>
-
-                <div style="margin-bottom: 1.5rem;">
-                    <h2 style="font-size: 1.5rem; font-weight: 700; color: #1F2937; margin-bottom: 0.5rem;">Enquiry Now
-                    </h2>
-                    <p style="color: #4B5563;">Fill out the form below and we'll get back to you soon!</p>
+            <div class="row">
+                @if(!empty($partnersImages))
+                @foreach ($partnersImages as $PartnerRow)
+                <div class="col-4">
+                    <div style="width:auto;height:150px;overflow:hidden;">
+                        <img src="{{ url($PartnerRow->image) }}" alt="deHaat"  class="img-fluid" />
+                    </div>
                 </div>
+                @endforeach
+                 @else
+                 <div class="col-4">
+                    <img src="assets/img/deHaat-logo.png" alt="deHaat" width="200" height="" class="img-fluid" />
+                </div>
+                <div class="col-4">
+                    <img src="assets/img/amrit.jpg" alt="deHaat" width="200" height="" class="img-fluid" />
+                </div>
+                <div class="col-4">
+                    <img src="assets/img/guiding.jpg" alt="deHaat" width="200" height="" class="img-fluid" />
+                </div>
+                 @endif
 
-                <form id="contactForm" method="POST">
-                    @csrf
-
-                    <div class="form-group">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" id="name" name="name" class="form-input" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone" class="form-label">Phone Number</label>
-                        <input type="tel" id="phone" name="phone_number" class="form-input" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea id="message" name="message" rows="3" class="form-textarea" required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="captcha_enquiry_form" class="form-label">Captcha</label>
-                        <input type="text" id="captcha_enquiry_form" name="captcha" class="form-input" required
-                            placeholder="Enter Captcha">
-
-                        <div style="display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem;">
-                            <img class="img-thumbnail" style="max-width: 150px;" src="{{ captcha_src() }}"
-                                id="captcha_img_id_enquiry_form" alt="captcha">
-
-                            <button type="button" class="btn btn-icon btn-light"
-                                onclick="refreshCapthca('captcha_img_id_enquiry_form','captcha_enquiry_form')">
-                                <i class="fa fa-refresh"></i>
-                            </button>
-                        </div>
-                    </div>
-
-
-                    <button type="submit" class="submit-btn mb-5">Submit</button>
-                </form>
             </div>
         </div>
-    </div>
-
-    <!-- JavaScript for Modal functionality -->
-    <!-- Modal Popup CSS -->
-    <style>
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem;
-            overflow-y: auto;
-        }
-
-        .modal-container {
-            background-color: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 800px;
-
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            max-height: 100vh;
-            /* Prevent modal from exceeding screen */
-            overflow-y: auto;
-        }
-
-        @media (min-width: 768px) {
-            .modal-container {
-                flex-direction: row;
-                /* Side-by-side only on desktop */
-                max-height: 80vh;
-                /* Adjust height for large screens */
-            }
-        }
-
-        .modal-image-section {
-            width: 100%;
-            background-color: #EFF6FF;
-            /* blue-50 */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-        }
-
-        @media (min-width: 768px) {
-            .modal-image-section {
-                width: 50%;
-            }
-        }
-
-        .modal-form-section {
-            width: 100%;
-            padding: 1.5rem;
-            position: relative;
-        }
-
-        @media (min-width: 768px) {
-            .modal-form-section {
-                width: 50%;
-            }
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: #6B7280;
-            /* gray-500 */
-        }
-
-        .close-btn:hover {
-            color: #374151;
-            /* gray-700 */
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: #374151;
-            /* gray-700 */
-            margin-bottom: 0.25rem;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 0.5rem 0.75rem;
-            border: 1px solid #D1D5DB;
-            /* gray-300 */
-            border-radius: 0.375rem;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: #3B82F6;
-            /* blue-500 */
-            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
-        }
-
-        .form-textarea {
-            width: 100%;
-            padding: 0.5rem 0.75rem;
-            border: 1px solid #D1D5DB;
-            /* gray-300 */
-            border-radius: 0.375rem;
-            resize: vertical;
-        }
-
-        .form-textarea:focus {
-            outline: none;
-            border-color: #3B82F6;
-            /* blue-500 */
-            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
-        }
-
-        .submit-btn {
-            width: 100%;
-            background-color: #2563EB;
-            /* blue-600 */
-            color: white;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 0.375rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .submit-btn:hover {
-            background-color: #1D4ED8;
-            /* blue-700 */
-        }
-    </style>
+    </section> -->
+    <!-- {{-- Testimonial Section End  --}} -->
 @endsection
+<style>
+    .about-image{
+        display:flex;
+    }
+    .about-text{
+        display:end;
+    }
+    
+.our_services-title + p {font: 400 14px/normal var(--font-josefin);color: rgb(var(--black-color));}
+.our_services-title + p{margin-bottom: 10px; display: -webkit-box;max-width: 100%;-webkit-line-clamp: 2;-webkit-box-orient: vertical;overflow: hidden;}
+
+.custom-container, .header-contaner{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+#ourServices {
+    justify-content: center;
+}
+ .our-block {
+   
+    padding: 1rem;
+    transition: var(--transition);
+    cursor: pointer;
+    background-color: #fff;
+    position: relative;
+    z-index: 0;
+    min-height: 100px;
+}
+.our-block::before {
+    transition: var(--transition);
+    content: '';
+    position: absolute;
+    top: 0rem;
+    right: 0rem;
+    bottom: 0rem;
+    left: 0rem;
+    background-color: #fff;
+    box-shadow: 0px 0px 15px -5px rgb(0 0 0 / 30%);
+    z-index: -1;
+}
+.our-block:hover:before {
+    top: -0.4rem;
+    right: -0.4rem;
+    bottom: -0.4rem;
+    left: -0.4rem;
+}
+.our-block-figure > svg {
+    font-size: 30px;
+    color: var(--primary-bg);
+    transition: var(--transition);
+    position: relative;
+    left: 0;
+    top: 0;
+}
+.our-block-figure {
+    float: left;
+    position: relative;
+    transition: var(--transition);
+}
+.our-block-figure::after {
+    content: '';
+    position: absolute;
+    left: -1rem;
+    top: -1rem;
+    width: calc(100% + 2rem);
+    height: calc(100% + 2rem);
+    background-color: rgba(1,0,102,255);
+    border: 5px solid rgba(1,0,102,255);
+    border-bottom-right-radius: 100%;
+    transform: scale(0) translate(-100%, -100%);
+    transition: var(--transition);
+    z-index: -1;
+}
+.our-block:hover > .our-content h4.our-title{color: rgba(1,0,102,255);font-weight: 700;}
+.our-block:hover .our-block-figure > svg {
+    color: #fff;
+    top: -5px;
+    left: -5px;
+}
+.our-block:hover .our-block-figure::after {
+    transform: scale(1) translate(0%, 0%);
+}
+.our-block:hover {
+    border-color:rgba(1,0,102,255) ;
+}
+ .our-block:hover:before {
+    background-color: #fff;
+    top: 0rem;
+    bottom: 0rem;
+    right: 0rem;
+    left: 0rem;
+}
+.our-block > .our-content {
+    margin-left: 50px;
+    text-align: left;
+    margin-top:14px;
+}
+.our-block > .our-content h4.our-title {
+    font: 500 16px/normal var(--lato-font);
+    margin-bottom: 10px;
+    color: var(--primary-bg);
+    transition: var(--transition);
+}
+.our-content p {
+    font-size: 15px;
+    line-height: 20px;
+} 
+    </style>
 @section('script')
     <script>
         let site_url = '{{ url('/') }}';
     </script>
-    <script src="js/homePage.js"></script>
-    <script></script>
-    <script>
-        // Show modal after 20 seconds
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                document.getElementById('contactModal').style.display = 'flex';
-            }, 20000);
-        });
-
-        // Close modal function
-        function closeModal() {
-            $("#contactForm")[0].reset();
-            document.getElementById('contactModal').style.display = 'none';
-        }
-
-        // Refresh CAPTCHA
-        function refreshCapthca(imgId, inputId) {
-            const baseUrl = "{{ url('captcha/default') }}";
-            document.getElementById(imgId).src = baseUrl + "?" + Math.random();
-            document.getElementById(inputId).value = "";
-        }
-
-        // Form submit handler with AJAX
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const formData = new FormData(this);
-
-            // Optional quick check if captcha is empty
-            const captchaValue = $('#captcha_enquiry_form').val().trim();
-            if (!captchaValue) {
-                errorMessage("Please enter the captcha.");
-                return;
-            }
-
-            $('#submitButton').attr('disabled', true); // disable button
-
-            $.ajax({
-                type: 'POST',
-                url: "{{ route('saveEnquiry') }}",
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                success: function(response) {
-                    if (response.status) {
-                        toastr.success(response.message);
-                        closeModal();
-                    } else {
-                        errorMessage(response.message ?? "Something went wrong.");
-                        $('#submitButton').attr('disabled', false);
-                    }
-                },
-                error: function(xhr) {
-                    if (xhr.status === 422) {
-                        const errors = xhr.responseJSON.errors;
-                        if (errors?.captcha) {
-                            toastr.error(errors.captcha[0]); // show "Invalid captcha"
-                        } else {
-                            toastr.error(response.message);
-                        }
-                        // Refresh CAPTCHA
-                        refreshCapthca('captcha_img_id_enquiry_form', 'captcha_enquiry_form');
-                    } else {
-                        toastr.error("Something went wrong.");
-                    }
-                    $('#submitButton').attr('disabled', false);
-                }
-            });
-        });
-
-        // Close modal when clicking outside
-        document.getElementById('contactModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
-    </script>
+    {{-- <script src="js/homePage.js?v=2"></script> --}}
 @endsection
+

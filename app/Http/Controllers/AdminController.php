@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\GalleryItem;
 use App\Models\NavMenu;
 use App\Models\User;
-use App\Models\BrandPortfolio;
 use App\Traits\CommonFunctions;
 use Exception;
 use Illuminate\Http\Request;
@@ -13,7 +12,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables;
-
 class AdminController extends Controller
 {
     use CommonFunctions;
@@ -39,7 +37,7 @@ class AdminController extends Controller
             $this->reportException($exception);
         }
     }
-    
+
     public function Login()
     {
         try{
@@ -66,18 +64,29 @@ class AdminController extends Controller
                 if(empty($findUser)){
                     $return = redirect()->back()->withInput()->with("error","Invalid details");
                 }else if(Auth::attempt(['email' => $request->input(User::EMAIL), 'password' => $request->input(User::PASSWORD)])){
-                    $request->session()->regenerate();                    
+                    $request->session()->regenerate();
                     $return = redirect("new-dashboard");
                 }else{
                     $return = redirect()->back()->withInput()->with("error","Invalid details");
-                }    
+                }
             }
-             
+
             return $return;
         }catch(Exception $exception){
             $this->reportException($exception);
         }
-    }    
+    }
+
+
+    // LOG OUT FUNCTION
+public function logout(Request $req){
+    Auth::guard('web')->logout();
+    $req->session()->invalidate();
+    $req->session()->regenerateToken();
+    return redirect()->route('login');
+
+}
+
     /**
      * addEditNavigation
      *
@@ -99,7 +108,7 @@ class AdminController extends Controller
             if($validate->fails()){
                 $return = redirect()->back()->withInput()->with("error",$validate->getMessageBag()->first());
             }else{
-                
+
                 if($request->input("action")=="insert"){
                     $return = (new NavMenu())->insertNavMenu($request->all());
                 }elseif($request->input("action")=="update"){
@@ -111,14 +120,14 @@ class AdminController extends Controller
                     $return = redirect()->back()->with("success",$return["message"]);
                 }else{
                     $return = redirect()->back()->withInput()->with("error",$return["message"]);
-                }                
+                }
             }
             return $return;
         }catch(Exception $exception){
             $this->reportException($exception);
         }
     }
-    
+
     /**
      * navDataTable
      *
@@ -137,16 +146,16 @@ class AdminController extends Controller
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
-     
+
                            $btn = '<a data-row="'.base64_encode(json_encode($row)).'" href="javascript:void(0)" class="edit btn btn-primary btn-sm">Edit</a>'.
                            '<a href="javascript:void(0)" onclick="deleteNav(\''.$row->{NavMenu::ID}.'\')" class="edit btn btn-danger btn-sm">Delete</a>';
-    
+
                             return $btn;
                     })
                     ->rawColumns(['action'])
                     ->make(true);
     }
-    
+
     /**
      * manageGallery
      *
@@ -154,15 +163,13 @@ class AdminController extends Controller
      */
     public function manageGallery(){
         try{
-            $brand = BrandPortfolio::where('status',1)->get(['id', 'title']);
-
-            return view("Dashboard.Pages.manageGallery",compact('brand'));
+            return view("Dashboard.Pages.manageGallery");
 
         }catch(Exception $exception){
             $this->reportException($exception);
         }
     }
-    
+
     /**
      * addGalleryItems
      *
@@ -211,7 +218,7 @@ class AdminController extends Controller
             $validate = Validator::make($request->all(),$validation);
             if($validate->fails()){
                 $return = ["status"=>false,"message"=>$validate->getMessageBag()->first(),"data"=>$request->all()];
-            }else{                
+            }else{
                 if($request->input("action")=="insert"){
                     $return = (new GalleryItem())->addGalleryItem($request);
                 }elseif($request->input("action")=="update"){
@@ -220,7 +227,7 @@ class AdminController extends Controller
                     $return = (new GalleryItem())->deleteGalleryItem($request->all());
                 }else{
                     $return = ["status"=>false,"message"=>"Invalid action","data"=>null];
-                }                                 
+                }
             }
             Cache::forget("galleryImages");
             return response()->json($return);
@@ -230,7 +237,7 @@ class AdminController extends Controller
             $this->reportException($exception);
         }
     }
-    
+
     /**
      * addGalleryDataTable
      *
@@ -254,15 +261,15 @@ class AdminController extends Controller
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
-     
+
                            $btn = '<a data-row="'.base64_encode(json_encode($row)).'" href="javascript:void(0)" class="edit btn btn-primary btn-sm">Edit</a>'.
                            '<a href="javascript:void(0)" onclick="deleteGallery(\''.$row->{GalleryItem::ID}.'\')" class="edit btn btn-danger btn-sm">Delete</a>';
-    
+
                             return $btn;
                     })->rawColumns(['action'])
                     ->make(true);
     }
-    
+
     /**
      * aboutUs
      *
@@ -281,18 +288,18 @@ class AdminController extends Controller
             if($validate->fails()){
                 $return = ["status"=>false,"message"=>$validate->getMessageBag()->first(),"data"=>null];
             }else{
-                
+
                 if($request->input("action")=="delete"){
                     $return = (new NavMenu())->deleteNavMenu($request->all());
                 }else{
                     $return = ["status"=>false,"message"=>"Invalid action","data"=>null];
                 }
-                            
+
             }
             return response()->json($return);
         }catch(Exception $exception){
             $this->reportException($exception);
         }
     }
-    
+
 }
