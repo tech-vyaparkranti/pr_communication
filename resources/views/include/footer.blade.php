@@ -182,13 +182,13 @@
     </div>
 
     <!-- Success Alert -->
-    <div class="alert alert-success alert-dismissible fade compact-success-alert" role="alert" id="compactSuccessAlert">
+    {{-- <div class="alert alert-success alert-dismissible fade compact-success-alert" role="alert" id="compactSuccessAlert">
         <i class="fas fa-check-circle me-2"></i>
         <strong>Success!</strong> Your enquiry has been submitted.
         <button type="button" class="btn-close" onclick="hideCompactAlert()"></button>
-    </div>
+    </div> --}}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script> --}}
     <script>
         // Generate random captcha
         function generateCompactCaptcha() {
