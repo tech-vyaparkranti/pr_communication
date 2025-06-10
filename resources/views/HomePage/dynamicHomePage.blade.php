@@ -1,5 +1,5 @@
 @extends('layouts.webSite')
-@section('title', 'Adiyogi Global ')
+@section('title', 'RN Communication ')
 @section('content')
     {{-- @include('include.navigation') --}}
     @include('include.slider')
@@ -226,7 +226,7 @@
                 <div class="swiper-pagination"></div>
             </div>
         </div>
-    </div> --> --}}
+    </div> --> 
     <!-- Destinations Section End -->
 
     <!-- {{-- Testimonial Section  --}}

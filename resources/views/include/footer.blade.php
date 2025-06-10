@@ -76,9 +76,9 @@
                         <li><a href="{{ route('termsConditions') }}">Terms & Conditions</a></li>
                         <!-- {{-- <li><a href="{{ route('shippingDeliverypolicy') }}">Shipping & Delivery Policy</a></li>
                         <li><a href="{{ route('CancellationRefundPolicy') }}">Cancellation & Refund Policy</a></li> --}} -->
-                        <li><a href="{{ url('/') }}/comingsoon">Privacy Policy</a></li>
+                        <li><a href="{{ route('privacyPolicy') }}">Privacy Policy</a></li>
 
-                        <li><a href="{{ route('productPage') }}">Products</a></li>
+                        <li><a href="{{ route('productPage') }}">Services</a></li>
 
                         <li><a href="{{ route('contactUs') }}">Contact Us</a></li>
                         <li><a href="{{ route('sitemap') }}">Sitemap</a></li>
