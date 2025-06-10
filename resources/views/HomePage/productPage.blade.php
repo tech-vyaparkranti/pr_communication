@@ -1,5 +1,5 @@
 @extends('layouts.webSite')
-@section('title', 'Product')
+@section('title', 'Services')
 @section('content')
 <div class="information-page-slider">
     <div class="information-content">
@@ -10,7 +10,7 @@
     <div class="default-content products-page pt-5 pb-3">
         <div class="custom-container">
             <div class="site-title pb-3">
-                <h2 class="text-center">Our Products</h2>
+                <h2 class="text-center">Our Services</h2>
                 {{-- <p class="text-center pb-3">From basic treks to high-altitude mountaineering expeditions, we cater to adventurers of all levels.</p> --}}
             </div>
             <div class="midd-content">

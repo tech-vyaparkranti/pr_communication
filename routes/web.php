@@ -40,8 +40,8 @@ Route::get("terms-conditions",[HomePageController::class,"termsConditions"])->na
 Route::get("shipping-delivery-policy",[HomePageController::class,"shippingDeliverypolicy"])->name("shippingDeliverypolicy");
 Route::get("cancellation-refund-policy",[HomePageController::class,"CancellationRefundPolicy"])->name("CancellationRefundPolicy");
 Route::get("privacy-policy",[HomePageController::class,"privacyPolicy"])->name("privacyPolicy");
-Route::get("services",[HomePageController::class,"destinations"])->name("destinations");
-Route::get("products",[HomePageController::class,"productPage"])->name("productPage");
+// Route::get("services",[HomePageController::class,"destinations"])->name("destinations");
+Route::get("services",[HomePageController::class,"productPage"])->name("productPage");
 Route::get("report",[HomePageController::class,"reportPage"])->name("reportPage");
 Route::get("event",[HomePageController::class,"galleryPages"])->name("galleryPages");
 Route::get("contact-us",[HomePageController::class,"contactUs"])->name("contactUs");
@@ -50,6 +50,10 @@ Route::get("blog",[HomePageController::class,"blogPage"])->name("blogPage");
 // Route::get("get-home-page-services",[OurServicesModelController::class,"getHomePageServices"])->name("getHomePageServices");
 Route::post("contact-us-form",[ContactUsController::class,"saveContactUsDetails"])->name("saveContactUsDetails");
 Route::get('refresh-captcha',[HomePageController::class,"refreshCapthca"])->name("refreshCaptcha");
+
+Route::get('/sitemap', function () {
+    return view('sitemap'); // This will load resources/views/sitemap.blade.php
+})->name('sitemap');
 // Route::get("get-testimonials-home-page", [TestimonialsController::class, "getHomePageTestimonials"])->name("getHomePageTestimonials");
 
 // require __DIR__.'/auth.php';
