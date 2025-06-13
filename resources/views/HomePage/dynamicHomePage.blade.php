@@ -264,14 +264,14 @@
 <section class="our-service pt-5 pb-5">
     <div class="custom-container">
         <div class="section-heading mb-4">
-            <h2 class="text-center">Why chose us</h2>
+            <h2 class="text-center">Why choose us</h2>
         </div>
         <div class="row" id="ourServices">
             <div class="col-md-4 mb-4">
                 <div class="our-block">
                     <div class="our-block-figure"><i class="fa-solid fa-sliders"></i></div>
                     <div class="our-content">
-                        <p class="mb-0 text-center">Premium Quality Products</p>
+                        <p class="mb-0 text-center">Audio-Video Support</p>
                     </div>
                 </div>
             </div>
@@ -280,7 +280,7 @@
                     <div class="our-block-figure"><i class="fa-solid fa-award"></i></div>
                     <div class="our-content">
 
-                        <p class="mb-0 text-center">Extensive Range</p>
+                        <p class="mb-0 text-center">Live Streaming</p>
                     </div>
                 </div>
             </div>
@@ -289,7 +289,7 @@
                     <div class="our-block-figure"><i class="fa-regular fa-star"></i></div>
                     <div class="our-content">
 
-                        <p class="mb-0 text-center">Trusted Sourcing</p>
+                        <p class="mb-0 text-center">Event Management - Townhall</p>
                     </div>
                 </div>
             </div>
@@ -298,7 +298,7 @@
                     <div class="our-block-figure"><i class="fa-solid fa-headphones"></i></div>
                     <div class="our-content">
 
-                        <p class="mb-0 text-center">Global Standards</p>
+                        <p class="mb-0 text-center">Audio-Video Rentals</p>
                     </div>
                 </div>
             </div>
@@ -307,7 +307,7 @@
                     <div class="our-block-figure"><i class="fa-solid fa-fire"></i></div>
                     <div class="our-content">
 
-                        <p class="mb-0 text-center">Sustainable Practices</p>
+                        <p class="mb-0 text-center">Onsite Support</p>
                     </div>
                 </div>
             </div>
@@ -316,7 +316,7 @@
                     <div class="our-block-figure"><i class="fa-solid fa-wallet"></i></div>
                     <div class="our-content">
 
-                        <p class="mb-0 text-center">Customer-Centric Approach</p>
+                        <p class="mb-0 text-center">Specialized AV Solutions</p>
                     </div>
                 </div>
             </div>
