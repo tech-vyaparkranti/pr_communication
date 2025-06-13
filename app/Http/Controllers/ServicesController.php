@@ -7,6 +7,8 @@ use App\Models\ServicesModel;
 use App\Traits\CommonFunctions;
 use Exception;
 use Illuminate\Support\Facades\Auth;
+use App\Models\ContactUsModel;
+use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
 class ServicesController extends Controller
@@ -171,4 +173,51 @@ class ServicesController extends Controller
         return $return;
     }
     
+
+    public function managecontactdata(Request $request)
+{
+    if ($request->ajax()) {
+        $data = ContactUsModel::query();
+
+        // If no data, add 2 static dummy rows
+        if ($data->count() == 0) {
+            $static = collect([
+                [
+                    'first_name' => 'John',
+                    'last_name' => 'Doe',
+                    'email' => 'john@example.com',
+                    'country_code' => '+1',
+                    'phone_number' => '1234567890',
+                    'message' => 'This is a static message.',
+                    'ip_address' => '127.0.0.1',
+                    'user_agent' => 'Static UA',
+                    'status' => 'new',
+                    'created_at' => now(),
+                ],
+                [
+                    'first_name' => 'Jane',
+                    'last_name' => 'Smith',
+                    'email' => 'jane@example.com',
+                    'country_code' => '+44',
+                    'phone_number' => '9876543210',
+                    'message' => 'Another static message.',
+                    'ip_address' => '192.168.1.1',
+                    'user_agent' => 'Static UA 2',
+                    'status' => 'read',
+                    'created_at' => now(),
+                ],
+            ]);
+
+            return DataTables::of($static)
+                ->addIndexColumn()
+                ->make(true);
+        }
+
+        return DataTables::of($data)
+            ->addIndexColumn()
+            ->make(true);
+    }
+
+    abort(403);
+}
 }

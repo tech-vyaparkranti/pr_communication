@@ -113,5 +113,12 @@
                   <div data-i18n="Analytics">Manage Home Products</div>
                 </a>
               </li>
+
+              <li class="menu-item">
+                <a href="{{route("})->name("ContactUsData");")}}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-notepad"></i>
+                  <div data-i18n="Analytics">Contact us enquiry</div>
+                </a>
+              </li>
             </ul>
           </aside>

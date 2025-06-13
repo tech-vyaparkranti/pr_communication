@@ -45,4 +45,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get("home-products-admin", [HomeProductsController::class, "homeDestinationsSlider"])->name("homeDestinationsSlider");
     Route::post("home-products-services", [HomeProductsController::class, "homeDestinationsSaveSlide"])->name("homeDestinationsSaveSlide");
     Route::post("home-products-data", [HomeProductsController::class, "homeDestinationsData"])->name("homeDestinationsData");
+
+    Route::post("manage-contact-data", [ServicesController::class, "managecontactdata"])->name("managecontactdata");
+
+    Route::get("contact-us-data", function () {
+    return view("Dashboard.ContactUs.index");
+})->name("ContactUsData");
+
 });
