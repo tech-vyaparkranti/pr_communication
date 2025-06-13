@@ -76,74 +76,82 @@
         </div>
     </section> -->
 
-    <!-- Destinations Section -->
-    <div class="destinations pt-5 pb-4" data-aos="fade-up">
-        <div class="custom-container">
-            <div class="site-title pb-4">
-                <h2 class="text-center">Our Services</h2>
-            </div>
-            <div class="swiper we-offer">
-                <div class="swiper-wrapper">
-                    @foreach ($home_products as $item )
-                    <div class="swiper-slide">
-                        <div class="destinations-block">
-                            <div class="destinations-figure">
-                                <img src="{{ asset($item->image) }}" class="img-fluid" width="" height="" alt="Destinations">
-                            </div>
-                            <span class="destinations-title mh-auto text-center">{{$item->heading_top}}</span>
-                        </div>
-            </div>
-                    @endforeach
-                <div class="swiper-slide">
-                            <div class="destinations-block">
-                                <div class="destinations-figure">
-                                    <img src="./assets/img/Basmati rice.jpeg" class="img-fluid" width="" height="" alt="Destinations">
-                                </div>
-                                <span class="destinations-title mh-auto text-center">Basmati Rice</span>
-                            </div>
-                </div>
+   <!-- Destinations Section -->
+<div class="destinations pt-5 pb-4" data-aos="fade-up">
+  <div class="custom-container">
+    <div class="site-title pb-4">
+            <h2 class="text-center">Our Services</h2>
+        </div>
 
-                <div class="swiper-slide">
-                            <div class="destinations-block">
-                                <div class="destinations-figure">
-                                    <img src="./assets/img/Ground Spice.jpg" class="img-fluid" width="" height="" alt="Destinations">
-                                </div>
-                                <span class="destinations-title mh-auto text-center">Ground Spices</span>
-                            </div>
-                </div>
-                <div class="swiper-slide">
-                            <div class="destinations-block">
-                                <div class="destinations-figure">
-                                    <img src="./assets/img/Fruit & Vegitables 2.jpg" class="img-fluid" width="" height="" alt="Destinations">
-                                </div>
-                                <span class="destinations-title mh-auto text-center">Fresh Fruits & Vegetables</span>
-                            </div>
-                </div>
-                <div class="swiper-slide">
-                            <div class="destinations-block">
-                                <div class="destinations-figure">
-                                    <img src="./assets/img/Non Basmati Rice 2.jpg" class="img-fluid" width="" height="" alt="Destinations">
-                                </div>
-                                <span class="destinations-title mh-auto text-center">Non Basmati Rice</span>
-                            </div>
-                </div>
-                <div class="swiper-slide">
-                            <div class="destinations-block">
-                                <div class="destinations-figure">
-                                    <img src="./assets/img/fresh-fruits-berries-.jpg" class="img-fluid" width="" height="" alt="Destinations">
-                                </div>
-                                <span class="destinations-title mh-auto text-center">Fresh Fruits</span>
-                            </div>
-                </div>
-            </div>
-                <div class="swiper-pagination"></div>
-            </div>
-            <div class="view-button text-center pt-4">
-                <a href="{{ route('productPage') }}">Know more</a>
-            </div>
-        </div>
-    </div>
-    <!-- Destinations Section End -->
+        <div class="swiper we-offer">
+            <div class="swiper-wrapper">
+
+                @if ($home_products->count())
+                    @foreach ($home_products as $item)
+                        <div class="swiper-slide">
+                            <div class="destinations-block">
+                                <div class="destinations-figure">
+                                    <img src="{{ asset($item->image) }}" class="img-fluid" alt="Destinations">
+                                </div>
+                                <span class="destinations-title mh-auto text-center">{{ $item->heading_top }}</span>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <div class="swiper-slide">
+                        <div class="destinations-block">
+                            <div class="destinations-figure">
+                                <img src="./assets/img/Basmati rice.jpeg" class="img-fluid" alt="Destinations">
+                            </div>
+                            <span class="destinations-title mh-auto text-center">Basmati Rice</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="destinations-block">
+                            <div class="destinations-figure">
+                                <img src="./assets/img/Ground Spice.jpg" class="img-fluid" alt="Destinations">
+                            </div>
+                            <span class="destinations-title mh-auto text-center">Ground Spices</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="destinations-block">
+                            <div class="destinations-figure">
+                                <img src="./assets/img/Fruit & Vegitables 2.jpg" class="img-fluid" alt="Destinations">
+                            </div>
+                            <span class="destinations-title mh-auto text-center">Fresh Fruits & Vegetables</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="destinations-block">
+                            <div class="destinations-figure">
+                                <img src="./assets/img/Non Basmati Rice 2.jpg" class="img-fluid" alt="Destinations">
+                            </div>
+                            <span class="destinations-title mh-auto text-center">Non Basmati Rice</span>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="destinations-block">
+                            <div class="destinations-figure">
+                                <img src="./assets/img/fresh-fruits-berries-.jpg" class="img-fluid" alt="Destinations">
+                            </div>
+                            <span class="destinations-title mh-auto text-center">Fresh Fruits</span>
+                        </div>
+                    </div>
+                @endif
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="view-button text-center pt-4">
+            <a href="{{ route('productPage') }}">Know more</a>
+        </div>
+    </div>
+</div>
+<!-- Destinations Section End -->
+
 
      <!-- Destinations Section -->
       <!-- <div class="destinations pt-5 pb-2">
