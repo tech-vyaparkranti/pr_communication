@@ -3,7 +3,7 @@
 @section('content')
 <div class="information-page-slider">
     <div class="information-content">
-        <h1><a href="{{ url('/') }}">Home</a><span>Product</span></h1>
+        <h1><a href="{{ url('/') }}">Home</a><span>Services</span></h1>
     </div>
 </div>
 <div id="about">

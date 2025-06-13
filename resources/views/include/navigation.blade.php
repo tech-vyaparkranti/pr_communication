@@ -21,6 +21,7 @@
                     <li><a href="{{ route('aboutUs') }}">About Us</a> </li>
                     <li><a href="{{ route('productPage') }}">Our Services</a></li> 
                     <li><a href="{{ route('contactUs') }}">Contact Us</a></li>
+                    <li><a href="{{ route('event') }}">Contact Us</a></li>
                 </ul>
             </div>
             <ul class="social-media">
