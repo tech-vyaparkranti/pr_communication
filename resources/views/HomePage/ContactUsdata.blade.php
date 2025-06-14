@@ -4,7 +4,6 @@
 @section('content')
 <x-content-div heading="Contact Form Submissions">
     <x-card-element header="Contact Form Data">
-        {{-- The x-data-table component should render a <table class="data-table"> element --}}
         <x-data-table></x-data-table>
     </x-card-element>
 </x-content-div>
@@ -12,53 +11,31 @@
 
 @section('script')
 <script type="text/javascript">
-    let table = ""; // Declare table variable globally for potential future access
-
+    let table = "";
     $(function () {
-        // Initialize DataTable
         table = $('.data-table').DataTable({
-            processing: true, // Show processing indicator
-            serverSide: true, // Enable server-side processing for large datasets
-            scrollX: true,    // Enable horizontal scrolling for wide tables
+            processing: true,
+            serverSide: true,
+            scrollX: true,
             ajax: {
-                url: "{{ route('managecontactdata') }}", // Laravel route for DataTables data
-                type: "POST", // Method for the AJAX request
+                url: "{{ route('managecontactdata') }}",
+                type: "POST",
                 data: {
-                    // Include CSRF token for POST requests in Laravel
                     '_token': '{{ csrf_token() }}'
                 }
             },
             columns: [
-                // Column: Serial Number (DT_RowIndex is a special DataTables column for this)
-                { data: 'DT_RowIndex', name: 'DT_RowIndex', title: "Sr.No.", orderable: false, searchable: false },
-
-                // Column: First Name
+                { data: 'DT_RowIndex', name: 'DT_RowIndex', title: "Sr.No." },
                 { data: '{{ \App\Models\ContactUsModel::FIRST_NAME }}', name: '{{ \App\Models\ContactUsModel::FIRST_NAME }}', title: 'First Name' },
-
-                // Column: Last Name
                 { data: '{{ \App\Models\ContactUsModel::LAST_NAME }}', name: '{{ \App\Models\ContactUsModel::LAST_NAME }}', title: 'Last Name' },
-
-                // Column: Email
                 { data: '{{ \App\Models\ContactUsModel::EMAIL }}', name: '{{ \App\Models\ContactUsModel::EMAIL }}', title: 'Email' },
-
-                // Column: Country Code
                 { data: '{{ \App\Models\ContactUsModel::COUNTRY_CODE }}', name: '{{ \App\Models\ContactUsModel::COUNTRY_CODE }}', title: 'Country Code' },
-
-                // Column: Phone Number
                 { data: '{{ \App\Models\ContactUsModel::PHONE_NUMBER }}', name: '{{ \App\Models\ContactUsModel::PHONE_NUMBER }}', title: 'Phone' },
-
-                // Column: Message
                 { data: '{{ \App\Models\ContactUsModel::MESSAGE }}', name: '{{ \App\Models\ContactUsModel::MESSAGE }}', title: 'Message' },
-
-                // // Optional Columns (Uncomment if you want to display these)
                 // { data: '{{ \App\Models\ContactUsModel::IP_ADDRESS }}', name: '{{ \App\Models\ContactUsModel::IP_ADDRESS }}', title: 'IP' },
                 // { data: '{{ \App\Models\ContactUsModel::USER_AGENT }}', name: '{{ \App\Models\ContactUsModel::USER_AGENT }}', title: 'User Agent' },
-
-                // Column: Status
                 { data: '{{ \App\Models\ContactUsModel::STATUS }}', name: '{{ \App\Models\ContactUsModel::STATUS }}', title: 'Status' },
-
-                // Column: Created At - RENDERED IN UTC
-                {
+ {
                     data: '{{ \App\Models\ContactUsModel::CREATED_AT }}',
                     name: '{{ \App\Models\ContactUsModel::CREATED_AT }}',
                     title: 'Created At (UTC)',
@@ -103,12 +80,10 @@
                         });
                     }
                 },
-            ],
-            // Default sorting order for the table
-            order: [[10, "desc"]] // Sort by 'Created At' (column index 10) in descending order
+                        ],
+            order: [[10, "desc"]]
         });
     });
 </script>
-{{-- Include any other necessary DataTables scripts (e.g., plugins, language files) --}}
 @include('Dashboard.include.dataTablesScript')
 @endsection
