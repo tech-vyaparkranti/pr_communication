@@ -49,7 +49,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post("manage-contact-data", [ServicesController::class, "managecontactdata"])->name("managecontactdata");
 
     Route::get("contact-us-data", function () {
-    return view("Dashboard.ContactUs.index");
+    return view("HomePage.ContactUsdata");
 })->name("ContactUsData");
 
 });
